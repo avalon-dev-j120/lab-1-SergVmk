@@ -14,9 +14,11 @@ public final class Numbers {
      * @param values массив чисел
      * @return сумма элементов массива
      */
-    public static int sum(int[] values) {
-        int sum = 0;
-        for (int value : values) sum += value;
+    public static <T extends Number> double sum(T[] values) {
+        double sum = 0;
+       
+        for (T value : values) sum += value.doubleValue();
+        
         return sum;
     }
 
@@ -27,8 +29,10 @@ public final class Numbers {
      * @param values массив значений
      * @return среднее арифметическое с точностью до типа {@code double}.
      */
-    public static double avg(int[] values) {
+    public static <T extends Number> double avg(T[] values) {
+        
         return (double) sum(values) / values.length;
+        
     }
 
     /**
@@ -38,8 +42,10 @@ public final class Numbers {
      * @param b второе значение
      * @return большее из двух значений
      */
-    public static int max(int a, int b) {
-        return a > b ? a : b;
+    public static <T extends Comparable <T>> T max(T a,T b) {
+        
+        return a.compareTo(b) >= 0 ? a : b;
+       
     }
 
     /**
@@ -48,10 +54,10 @@ public final class Numbers {
      * @param values массив значений
      * @return максимальное значение массива
      */
-    public static int max(int[] values) {
-        int result = values[0];
-        for (int i = 1; i < values.length; i++) {
-            result = max(result, values[i]);
+    public static <T extends Comparable<T>> T max(T ... args) {
+        T result = args[0];
+        for (int i = 1; i < args.length; i++) {
+            result = max(result, args[i]);
         }
         return result;
     }
@@ -63,8 +69,8 @@ public final class Numbers {
      * @param b второе значение
      * @return меньшее из дух значений
      */
-    public static int min(int a, int b) {
-        return a < b ? a : b;
+    public static <T extends Comparable <T>> T min(T a, T b) {
+        return a.compareTo(b) < 0 ? a : b;
     }
 
     /**
@@ -73,10 +79,10 @@ public final class Numbers {
      * @param values массив значений
      * @return минимальное значение массива
      */
-    public static int min(int[] values) {
-        int result = values[0];
-        for (int i = 1; i < values.length; i++) {
-            result = min(result, values[i]);
+    public static <T extends Comparable<T>> T min(T ... args) {
+        T result = args[0];
+        for (int i = 1; i < args.length; i++) {
+            result = min(result, args[i]);
         }
         return result;
     }
