@@ -24,14 +24,14 @@ public class Fibonacci implements Iterable<Integer> {
      */
     private static class FibonacciIterator implements Iterator<Integer> {
 
-        private class FibonacciIterator
-        {
-            int value;
-            Item next;
-            Item(value){
-                this.value = value;
-            }
+        public Fibonacci(int max) {
+            
+                
+           
+            
         }
+
+
         /**
          * Определяет, есть ли следующее значение
          * последовательности чисел Фибоначчи.
@@ -41,9 +41,9 @@ public class Fibonacci implements Iterable<Integer> {
          * {@code false}.
          */
         FibonacciIterator next;
-        FibonacciIterator head = new FibonacciIterator();
-        FibonacciIterator prev;
-        FibonacciIterator pprev;
+        int Item;
+        int size;
+        int[] array;    
         public int maxelement;
         
         public boolean isEmpty()
@@ -53,8 +53,7 @@ public class Fibonacci implements Iterable<Integer> {
         
         public void add()
         {
-            if is
-            
+                       
         
         }
         
@@ -73,7 +72,7 @@ public class Fibonacci implements Iterable<Integer> {
         public Integer next() {
             if (hasNext())
             {
-                next = 
+                
             }
             throw new UnsupportedOperationException("Not implemented yet!");
         }
