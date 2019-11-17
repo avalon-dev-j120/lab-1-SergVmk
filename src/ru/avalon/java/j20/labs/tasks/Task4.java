@@ -17,7 +17,9 @@ public class Task4 implements Task {
     public void run() {
         Person a = new Person("Иван", "Иванов");
         Person b = new Person("Иван", "Иванов");
+        Person c = new Person("Иван", "Петров");
         boolean isEqual = a.equals(b);
+        boolean isEqual2 = a.equals(c);
         /*
          * TODO(Студент): Выполните задание №4
          *

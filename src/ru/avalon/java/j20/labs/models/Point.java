@@ -7,7 +7,7 @@ import ru.avalon.java.j20.labs.tasks.template.*;
  * Модель представления о точке.
  */
 
-public class Point implements Point{
+public class Point <T extends Number>{
    
    //Начало координат
     public static final Point BASIS = new Point(0, 0);

@@ -14,12 +14,20 @@ public class Task3 implements Task {
     @Override
     public void run() {
         Fibonacci fib  = new Fibonacci(20);
-        iterator =  iter = fib.iterator();
-        while (iter.hasnext())
+        Iterator iter = fib.iterator();
+        Integer sum = 0;
+        System.out.print("Сумма методом first20()"+fib.first20.toString());
+        System.out.println("");
+        while (iter.hasNext() == true)
         {
-            prin 
+           Integer inext = (Integer)iter.next();
+           sum+=inext;
+           System.out.print(" "+inext.toString());
         }
-        }        
+        System.out.println("");
+        System.out.println("Сумма "+sum.toString());
+        
+                
         /*
          * TODO(Студент): Выполнить задание №3
          *
