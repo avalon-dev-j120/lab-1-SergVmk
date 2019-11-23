@@ -16,8 +16,6 @@ public class Task3 implements Task {
         Fibonacci fib  = new Fibonacci(20);
         Iterator iter = fib.iterator();
         Integer sum = 0;
-        System.out.print("Сумма методом first20()"+fib.first20.toString());
-        System.out.println("");
         while (iter.hasNext() == true)
         {
            Integer inext = (Integer)iter.next();

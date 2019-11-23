@@ -47,7 +47,7 @@ public class Fibonacci implements Iterable<Integer> {
         Item last;
         Item iter;
         Item cursorItem;
-        
+        //Метод создания последовательности Фибоначчи с элементами
         public void InsFibonacci(int maxitem)
         {
             while (size<=maxitem)
@@ -85,8 +85,8 @@ public class Fibonacci implements Iterable<Integer> {
         @Override
         public boolean hasNext()
         {
-            return iter.next != null ? true : false;
-            //return size < maxsize ? true : false; //для второго способа
+            //return iter.next != null ? true : false; //Способ с созданием элементов последовательности
+            return size <= maxsize ? true : false; //для второго способа
 //            throw new UnsupportedOperationException("Not implemented yet!");
         }
         /**
@@ -98,22 +98,24 @@ public class Fibonacci implements Iterable<Integer> {
         @Override
         public Integer next() 
         {
-            Integer rez = iter.val;
-            iter = iter.next;
-            return rez;
-            /*if (size == 0)  Это тоже интересный способ, но из другой оперы
+            //Для способа с хранмыми элементами
+       //     Integer rez = iter.val;
+       //     iter = iter.next;
+       //     return rez;
+            //Способ с 2 переменными
+            if (size <2)
             {
                 size++;
-                return 0;
+                return size-1;
             }
             Integer rez = x+y;
             x=y;
             y=rez;
             size++;
-            return rez;*/
+            return rez;
             //throw new UnsupportedOperationException("Not implemented yet!");
         }
-        
+        //Для способа с храимыми элементами можно в любой момент найти любой член или сумму не перестраивая полностью последовательность
         public Integer first20()
         {
             cursorItem = head;
@@ -148,15 +150,12 @@ public class Fibonacci implements Iterable<Integer> {
     }
     
        
-    private int maxsize;
 
     public Fibonacci(int maxitem) {
-        this.maxsize = maxitem;
-        fibiter.InsFibonacci(maxitem);
-        first20 = fibiter.first20();
+        fibiter.maxsize = maxitem;
     }
     
-    public Integer first20 = 0;
+    
     private FibonacciIterator fibiter = new FibonacciIterator();
     
     
