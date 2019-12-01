@@ -18,12 +18,62 @@ import java.util.Iterator;
  */
 public class Fibonacci implements Iterable<Integer> {
 
+    
+
     /**
      * Итератор, выполняющий обход последовательности
      * чисел Фибоначчи.
      */
     private static class FibonacciIterator implements Iterator<Integer> {
-
+        
+        private class Item
+        {
+            Integer val;
+            Item prev;
+            Item next;
+            public Item(Integer ival)
+            {
+                this.val = ival;
+            }
+            
+        
+        }
+        
+        int size = 0;
+        int maxsize =0;
+        Integer x =0;
+        Integer y = 1;
+        Item head = new Item(0);
+        Item last;
+        Item iter;
+        Item cursorItem;
+        //Метод создания последовательности Фибоначчи с элементами
+        public void InsFibonacci(int maxitem)
+        {
+            while (size<=maxitem)
+            {
+                Item newItem = new Item(0);
+                if (size == 0)
+                {
+                    newItem.val = 1;
+                    head.next = newItem;
+                }
+                else
+                {
+                    Integer rez = x+y;
+                    x=y;
+                    y=rez;
+                    newItem.val = rez;
+                    last.prev = last;
+                    last.next = newItem;
+                }
+                last = newItem;
+                size++;
+            }
+            iter = head;
+        }
+                
+        
         /**
          * Определяет, есть ли следующее значение
          * последовательности чисел Фибоначчи.
@@ -33,10 +83,12 @@ public class Fibonacci implements Iterable<Integer> {
          * {@code false}.
          */
         @Override
-        public boolean hasNext() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+        public boolean hasNext()
+        {
+            //return iter.next != null ? true : false; //Способ с созданием элементов последовательности
+            return size <= maxsize ? true : false; //для второго способа
+//            throw new UnsupportedOperationException("Not implemented yet!");
         }
-
         /**
          * Возвращает следующее число последовательности
          * чисел Фибоначчи.
@@ -44,9 +96,45 @@ public class Fibonacci implements Iterable<Integer> {
          * @return следующее число последовательности.
          */
         @Override
-        public Integer next() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+        public Integer next() 
+        {
+            //Для способа с хранмыми элементами
+       //     Integer rez = iter.val;
+       //     iter = iter.next;
+       //     return rez;
+            //Способ с 2 переменными
+            if (size <2)
+            {
+                size++;
+                return size-1;
+            }
+            Integer rez = x+y;
+            x=y;
+            y=rez;
+            size++;
+            return rez;
+            //throw new UnsupportedOperationException("Not implemented yet!");
         }
+        //Для способа с храимыми элементами можно в любой момент найти любой член или сумму не перестраивая полностью последовательность
+        public Integer first20()
+        {
+            cursorItem = head;
+            Integer sum = 0;
+            for(int i=0;i<=20;i++)
+            {
+                sum+=cursorItem.val;
+                if (cursorItem.next == null)
+                    break;
+                cursorItem = cursorItem.next;
+            }
+            return sum;
+            
+        }
+                
+                
+                    
+                
+        
     }
 
     /**
@@ -57,6 +145,21 @@ public class Fibonacci implements Iterable<Integer> {
      */
     @Override
     public Iterator<Integer> iterator() {
-        return new FibonacciIterator();
+        return fibiter;
+       //throw new UnsupportedOperationException("Not implemented yet!");
     }
+    
+       
+
+    public Fibonacci(int maxitem) {
+        fibiter.maxsize = maxitem;
+    }
+    
+    
+    private FibonacciIterator fibiter = new FibonacciIterator();
+    
+    
+    
+    
+    
 }
